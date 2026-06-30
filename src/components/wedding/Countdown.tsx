@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { wedding } from "@/data/wedding";
 
-const WEDDING_DATE = new Date("2026-11-20T16:00:00-03:00").getTime();
+const WEDDING_DATE = new Date(wedding.dateISO).getTime();
 
 function calc() {
   const diff = Math.max(0, WEDDING_DATE - Date.now());
