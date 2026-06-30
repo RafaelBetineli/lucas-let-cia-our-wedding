@@ -1,11 +1,17 @@
 export const wedding = {
   couple: { groom: "Lucas", bride: "Letícia" },
+  initials: "L & L",
   dateISO: "2026-11-20T16:00:00-03:00",
   dateLabel: "20 · Novembro · 2026",
   dateShort: "20 · 11 · 2026",
+  dateFriendly: "20 de novembro",
   city: "São Paulo · SP",
   email: "lucas.leticia2026@email.com",
   instagram: "#",
+  tagline:
+    "Com a alegria nos olhos, convidamos você para celebrar conosco o início da nossa história a dois.",
+  rsvpDeadline: "30 de setembro de 2026",
+  footerQuote: "Onde há amor, há vida.",
 };
 
 export const story = [
