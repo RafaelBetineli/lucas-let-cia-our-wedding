@@ -1,29 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/wedding/Header";
+import { Hero } from "@/components/wedding/Hero";
+import { StoryTimeline } from "@/components/wedding/StoryTimeline";
+import { CeremonySection } from "@/components/wedding/CeremonySection";
+import { ReceptionSection } from "@/components/wedding/ReceptionSection";
+import { Gallery } from "@/components/wedding/Gallery";
+import { GiftList } from "@/components/wedding/GiftList";
+import { RSVPForm } from "@/components/wedding/RSVPForm";
+import { MessageWall } from "@/components/wedding/MessageWall";
+import { FAQAccordion } from "@/components/wedding/FAQAccordion";
+import { Footer } from "@/components/wedding/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Lucas & Letícia · 20 de Novembro de 2026" },
+      {
+        name: "description",
+        content:
+          "Site oficial do casamento de Lucas e Letícia. Confirme sua presença, veja nossa história, cerimônia, recepção e lista de presentes.",
+      },
+      { property: "og:title", content: "Lucas & Letícia · 20.11.2026" },
+      {
+        property: "og:description",
+        content: "Nos casamos em 20 de novembro de 2026. Estamos te esperando!",
+      },
     ],
   }),
-  component: Index,
+  component: Home,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Home() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground antialiased">
+      <Header />
+      <main>
+        <Hero />
+        <StoryTimeline />
+        <CeremonySection />
+        <ReceptionSection />
+        <Gallery />
+        <GiftList />
+        <RSVPForm />
+        <MessageWall />
+        <FAQAccordion />
+      </main>
+      <Footer />
     </div>
   );
 }
