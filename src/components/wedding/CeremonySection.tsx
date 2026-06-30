@@ -1,10 +1,10 @@
 import { MapPin, Clock, Church, ExternalLink } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { Reveal } from "./Reveal";
+import { ceremony } from "@/data/wedding";
 
 export function CeremonySection() {
-  const address = "Igreja Nossa Senhora, Rua das Flores, 1234 — São Paulo, SP";
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(ceremony.fullAddress)}`;
 
   return (
     <section id="cerimonia" className="py-24 md:py-32 bg-background">
@@ -35,9 +35,9 @@ export function CeremonySection() {
               </div>
 
               <div className="space-y-5">
-                <Info icon={<MapPin size={18} />} label="Local" value="Igreja Nossa Senhora" />
-                <Info icon={<Clock size={18} />} label="Horário" value="16h00 · sexta-feira" />
-                <Info icon={<MapPin size={18} />} label="Endereço" value="Rua das Flores, 1234 — São Paulo, SP" />
+                <Info icon={<MapPin size={18} />} label="Local" value={ceremony.venue} />
+                <Info icon={<Clock size={18} />} label="Horário" value={ceremony.time} />
+                <Info icon={<MapPin size={18} />} label="Endereço" value={ceremony.address} />
 
                 <a
                   href={mapsUrl}
