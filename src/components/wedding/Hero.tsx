@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { ChevronDown, MapPin, Heart } from "lucide-react";
 import heroImg from "@/assets/hero.jpg";
 import { Countdown } from "./Countdown";
+import { wedding } from "@/data/wedding";
 
 export function Hero() {
   const [offset, setOffset] = useState(0);
@@ -39,16 +40,15 @@ export function Hero() {
         </span>
 
         <h1 className="mt-6 font-display text-5xl sm:text-7xl md:text-8xl font-medium leading-[1.05] text-balance">
-          Lucas <span className="text-primary italic font-normal">&</span> Letícia
+          {wedding.couple.groom} <span className="text-primary italic font-normal">&</span> {wedding.couple.bride}
         </h1>
 
         <p className="mt-6 text-sm sm:text-base tracking-[0.4em] uppercase text-white/85">
-          20 · Novembro · 2026
+          {wedding.dateLabel}
         </p>
 
         <p className="mt-4 max-w-md text-white/75 text-sm sm:text-base">
-          Com a alegria nos olhos, convidamos você para celebrar conosco o início
-          da nossa história a dois.
+          {wedding.tagline}
         </p>
 
         <div className="mt-10 sm:mt-12 w-full max-w-2xl">

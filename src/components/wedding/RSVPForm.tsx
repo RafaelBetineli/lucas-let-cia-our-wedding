@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Check, Send } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { Reveal } from "./Reveal";
+import { wedding } from "@/data/wedding";
 
 interface RSVPData {
   fullName: string;
@@ -44,7 +45,7 @@ export function RSVPForm() {
         <SectionTitle
           eyebrow="RSVP"
           title="Confirme sua presença"
-          subtitle="Por favor, responda até 30 de setembro de 2026."
+          subtitle={`Por favor, responda até ${wedding.rsvpDeadline}.`}
         />
 
         <Reveal>
@@ -59,7 +60,7 @@ export function RSVPForm() {
                 <h3 className="font-display text-2xl md:text-3xl">Recebemos sua confirmação!</h3>
                 <p className="mt-3 text-muted-foreground max-w-md mx-auto">
                   Obrigado, {data.fullName.split(" ")[0] || "convidado"}. Mal podemos
-                  esperar para celebrar com você em 20 de novembro.
+                  esperar para celebrar com você em {wedding.dateFriendly}.
                 </p>
                 <button
                   type="button"

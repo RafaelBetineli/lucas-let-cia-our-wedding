@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { wedding } from "@/data/wedding";
 
 const NAV = [
   { href: "#historia", label: "Nossa História" },
@@ -39,7 +40,7 @@ export function Header() {
             scrolled ? "text-foreground" : "text-white",
           )}
         >
-          L <span className="text-primary">&</span> L
+          {wedding.initials}
         </a>
 
         <nav className="hidden lg:flex items-center gap-8">
