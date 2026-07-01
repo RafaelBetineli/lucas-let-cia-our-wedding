@@ -1,3 +1,8 @@
+import conhecemosImg from "@/assets/story/conhecemos.jpg";
+import primeiroEncontroImg from "@/assets/story/primeiro-encontro.jpg";
+import pedidoImg from "@/assets/story/pedido.jpg";
+import preparativosImg from "@/assets/story/preparativos.jpg";
+
 export const wedding = {
   couple: { groom: "Lucas", bride: "Letícia" },
   initials: "L & L",
@@ -19,25 +24,25 @@ export const story = [
     date: "Março · 2019",
     title: "Como nos conhecemos",
     text: "Um café, uma conversa que se estendeu por horas e a certeza silenciosa de que algo especial começava ali.",
-    img: "https://images.unsplash.com/photo-1529634597503-139d3726fed5?auto=format&fit=crop&w=900&q=80",
+    img: conhecemosImg,
   },
   {
     date: "Junho · 2019",
     title: "Primeiro encontro",
     text: "Caminhamos sem pressa pelas ruas da cidade, e no fim da noite já sabíamos: queríamos mais dias assim.",
-    img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
+    img: primeiroEncontroImg,
   },
   {
     date: "Dezembro · 2024",
     title: "O pedido",
     text: "Entre lágrimas, risos e o pôr do sol como testemunha, um sim que mudou tudo — e nada — ao mesmo tempo.",
-    img: "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=900&q=80",
+    img: pedidoImg,
   },
   {
     date: "2025 — 2026",
     title: "Preparativos",
     text: "Cada detalhe escolhido a quatro mãos, com carinho, para receber as pessoas que mais amamos no nosso grande dia.",
-    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
+    img: preparativosImg,
   },
 ];
 
