@@ -5,6 +5,7 @@ import { wedding } from "@/data/wedding";
 
 const NAV = [
   { href: "#historia", label: "Nossa História" },
+  { href: "#padrinhos", label: "Padrinhos" },
   { href: "#cerimonia", label: "Cerimônia" },
   { href: "#recepcao", label: "Recepção" },
   { href: "#galeria", label: "Galeria" },
