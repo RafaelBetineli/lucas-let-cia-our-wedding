@@ -24,7 +24,7 @@ export function Hero() {
           alt="Lucas e Letícia"
           width={1920}
           height={1280}
-          className="w-full h-[115%] object-cover"
+          className="w-[115%] max-w-none h-[115%] object-cover -translate-x-[7%]"
         />
       </div>
       {/* Elegant overlay */}

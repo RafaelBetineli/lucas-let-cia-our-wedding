@@ -47,10 +47,10 @@ export const story = [
 ];
 
 export const ceremony = {
-  venue: "Igreja Nossa Senhora",
+  venue: "Buffet Renascença",
   time: "16h00 · sexta-feira",
-  address: "Rua das Flores, 1234 — São Paulo, SP",
-  fullAddress: "Igreja Nossa Senhora, Rua das Flores, 1234 — São Paulo, SP",
+  address: "Rua Maria Eugênia, 109 — Mairiporã, SP",
+  fullAddress: "Buffet Renascença, Rua Maria Eugênia, 109 — Mairiporã, SP",
 };
 
 export const reception = [
