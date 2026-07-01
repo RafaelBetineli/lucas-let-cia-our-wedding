@@ -7,6 +7,7 @@ import { ReceptionSection } from "@/components/wedding/ReceptionSection";
 import { Gallery } from "@/components/wedding/Gallery";
 import { GiftList } from "@/components/wedding/GiftList";
 import { RSVPForm } from "@/components/wedding/RSVPForm";
+import { GroomsmenSection } from "@/components/wedding/GroomsmenSection";
 import { MessageWall } from "@/components/wedding/MessageWall";
 import { FAQAccordion } from "@/components/wedding/FAQAccordion";
 import { Footer } from "@/components/wedding/Footer";
@@ -37,6 +38,7 @@ function Home() {
       <main>
         <Hero />
         <StoryTimeline />
+        <GroomsmenSection />
         <CeremonySection />
         <ReceptionSection />
         <Gallery />
