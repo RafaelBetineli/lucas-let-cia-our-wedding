@@ -86,8 +86,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Lucas & Letícia · 20.11.2026" },
       { name: "twitter:description", content: "Site oficial do casamento de Lucas e Letícia — 20 de novembro de 2026. Confirme sua presença, veja nossa história e detalhes da cerimônia." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee66bfb4-39be-48bc-a0ea-56b6ec966c36/id-preview-cdb34e20--9fefb468-ec3a-4ddf-b3e8-8423771a4d46.lovable.app-1782916150306.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ee66bfb4-39be-48bc-a0ea-56b6ec966c36/id-preview-cdb34e20--9fefb468-ec3a-4ddf-b3e8-8423771a4d46.lovable.app-1782916150306.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/122b4abb-e7e0-4a59-bd54-8a8b004fca92" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/122b4abb-e7e0-4a59-bd54-8a8b004fca92" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
