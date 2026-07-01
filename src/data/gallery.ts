@@ -1,10 +1,19 @@
+import foto01 from "@/assets/gallery/foto-01.jpg";
+import foto02 from "@/assets/gallery/foto-02.jpg";
+import foto03 from "@/assets/gallery/foto-03.jpg";
+import foto04 from "@/assets/gallery/foto-04.jpg";
+import foto05 from "@/assets/gallery/foto-05.jpg";
+import foto06 from "@/assets/gallery/foto-06.jpg";
+import foto07 from "@/assets/gallery/foto-07.jpg";
+import foto08 from "@/assets/gallery/foto-08.jpg";
+
 export const galleryImages = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1606490194859-07c18c9f0968?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1525772764200-be829a350797?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1200&q=80",
-  "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+  foto01,
+  foto02,
+  foto03,
+  foto04,
+  foto05,
+  foto06,
+  foto07,
+  foto08,
 ];
