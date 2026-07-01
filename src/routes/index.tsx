@@ -38,6 +38,7 @@ function Home() {
       <main>
         <Hero />
         <StoryTimeline />
+        <GroomsmenSection />
         <CeremonySection />
         <ReceptionSection />
         <Gallery />
