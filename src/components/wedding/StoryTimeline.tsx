@@ -10,7 +10,7 @@ export function StoryTimeline() {
         <SectionTitle
           eyebrow="Nossa História"
           title="Os capítulos que nos trouxeram até aqui"
-          subtitle="Pequenos momentos que, somados, escreveram a nossa história de amor."
+          subtitle="Entre conversas, reencontros, chuva, família e muitos sonhos, Deus foi escrevendo cada capítulo da nossa história."
         />
 
         <div className="relative">
