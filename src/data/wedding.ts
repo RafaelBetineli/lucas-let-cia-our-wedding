@@ -21,28 +21,46 @@ export const wedding = {
 
 export const story = [
   {
-    date: "Março · 2019",
-    title: "Como nos conhecemos",
-    text: "Um café, uma conversa que se estendeu por horas e a certeza silenciosa de que algo especial começava ali.",
+    date: "2018",
+    title: "Como tudo começou",
+    text: "Tudo começou em 2018, de um jeito inesperado: pelo Facebook. As conversas aconteciam todos os dias, mas o encontro pessoal nunca veio. Com o tempo, cada um seguiu seu caminho, sem imaginar que aquela história ainda teria um novo começo.",
     img: conhecemosImg,
   },
   {
-    date: "Junho · 2019",
-    title: "Primeiro encontro",
-    text: "Caminhamos sem pressa pelas ruas da cidade, e no fim da noite já sabíamos: queríamos mais dias assim.",
+    date: "Fevereiro de 2021",
+    title: "O reencontro",
+    text: "No início de 2021, a vida resolveu aproximá-los novamente. Mais maduros, as conversas fluíram de forma leve e natural. Em fevereiro, veio o primeiro encontro: muita conversa, o tempo passando sem perceber e até uma chuva que deixou tudo com jeito de cena de filme.",
     img: primeiroEncontroImg,
   },
   {
-    date: "Dezembro · 2024",
-    title: "O pedido",
-    text: "Entre lágrimas, risos e o pôr do sol como testemunha, um sim que mudou tudo — e nada — ao mesmo tempo.",
+    date: "03 de março de 2021",
+    title: "O início da nossa história",
+    text: "No segundo encontro, algo mudou de vez. Desde aquele dia, não se desgrudaram mais. As mensagens de “bom dia” e “boa noite” viraram rotina, as terças-feiras ganharam um significado especial e, pouco a pouco, a amizade se transformou em amor.",
     img: pedidoImg,
   },
   {
-    date: "2025 — 2026",
-    title: "Preparativos",
-    text: "Cada detalhe escolhido a quatro mãos, com carinho, para receber as pessoas que mais amamos no nosso grande dia.",
+    date: "15 de junho de 2021",
+    title: "O pedido de namoro",
+    text: "Depois de três meses vivendo esse sentimento crescer, veio o pedido de namoro. Sem grandes produções ou cenário ensaiado, mas cheio de verdade. Ali, na simplicidade de um momento comum, começava oficialmente uma história que Deus já vinha conduzindo.",
     img: preparativosImg,
+  },
+  {
+    date: "Dezembro de 2021",
+    title: "A família e a aprovação",
+    text: "Com coragem, chegou a hora de apresentar o Lucas à família. A cena foi inesquecível: o pai no telhado, com uma makita na mão, no momento da apresentação oficial. O que começou com nervosismo se transformou em carinho, confiança e uma linda relação de família.",
+    img: conhecemosImg,
+  },
+  {
+    date: "Setembro de 2025",
+    title: "O pedido de casamento",
+    text: "Depois de cinco anos de risadas, aprendizados, sonhos compartilhados e um amor cada vez mais maduro, veio o tão esperado pedido de casamento. Um novo capítulo começou, cheio de gratidão, alegria e expectativa pelo grande dia.",
+    img: primeiroEncontroImg,
+  },
+  {
+    date: "20 de novembro de 2026",
+    title: "O nosso grande dia",
+    text: "Agora, com o coração cheio de alegria, eles se preparam para viver o maior sonho: dizer “sim” diante de Deus e das pessoas que amam. E mal podem esperar para celebrar esse momento tão especial com todos vocês.",
+    img: pedidoImg,
   },
 ];
 
