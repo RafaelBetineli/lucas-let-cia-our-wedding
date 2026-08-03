@@ -12,6 +12,7 @@ interface RSVPData {
   guests: number;
   diet: string;
   message: string;
+  publishMessage: boolean;
 }
 
 const INITIAL: RSVPData = {
@@ -21,6 +22,7 @@ const INITIAL: RSVPData = {
   guests: 1,
   diet: "",
   message: "",
+  publishMessage: false,
 };
 
 export function RSVPForm() {
@@ -49,6 +51,7 @@ export function RSVPForm() {
           guest_count: data.guests,
           dietary_restrictions: data.diet.trim() || null,
           message: data.message.trim() || null,
+          message_public: Boolean(data.message.trim()) && data.publishMessage,
         });
 
       if (error) throw error;
@@ -167,11 +170,31 @@ export function RSVPForm() {
                     rows={4}
                     value={data.message}
                     maxLength={2000}
-                    onChange={(e) => update("message", e.target.value)}
+                    onChange={(e) => {
+                      update("message", e.target.value);
+                      if (!e.target.value.trim()) update("publishMessage", false);
+                    }}
                     className={`${inputCls} resize-none`}
                     placeholder="Deixe um recadinho carinhoso..."
                   />
                 </Field>
+
+                <label
+                  className={`flex items-start gap-3 rounded-xl border border-border bg-background/60 px-4 py-3 text-sm leading-relaxed transition ${
+                    data.message.trim()
+                      ? "cursor-pointer text-foreground/80"
+                      : "cursor-not-allowed text-muted-foreground/60"
+                  }`}
+                >
+                  <input
+                    type="checkbox"
+                    checked={data.publishMessage}
+                    disabled={!data.message.trim()}
+                    onChange={(e) => update("publishMessage", e.target.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-primary"
+                  />
+                  Autorizo que meu nome e minha mensagem apareçam no mural público do site.
+                </label>
 
                 {submitError && (
                   <p
