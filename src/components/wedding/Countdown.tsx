@@ -17,8 +17,9 @@ interface CountdownProps {
 }
 
 export function Countdown({ variant = "light" }: CountdownProps) {
-  const [t, setT] = useState(calc());
+  const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 });
   useEffect(() => {
+    setT(calc());
     const id = setInterval(() => setT(calc()), 1000);
     return () => clearInterval(id);
   }, []);
