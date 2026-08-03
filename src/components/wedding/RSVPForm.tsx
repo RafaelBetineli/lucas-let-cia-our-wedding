@@ -3,6 +3,7 @@ import { Check, Send } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { Reveal } from "./Reveal";
 import { wedding } from "@/data/wedding";
+import { getSupabaseClient } from "@/lib/supabase";
 
 interface RSVPData {
   fullName: string;
@@ -26,17 +27,40 @@ export function RSVPForm() {
   const [data, setData] = useState<RSVPData>(INITIAL);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const update = <K extends keyof RSVPData>(k: K, v: RSVPData[K]) =>
     setData((d) => ({ ...d, [k]: v }));
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitting) return;
+
     setSubmitting(true);
-    // TODO: integrar com Supabase futuramente
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setSuccess(true);
+    setSubmitError(null);
+
+    try {
+      const { error } = await getSupabaseClient()
+        .from("rsvp_responses")
+        .insert({
+          full_name: data.fullName.trim().replace(/\s+/g, " "),
+          phone: data.phone.trim(),
+          email: data.email.trim() || null,
+          guest_count: data.guests,
+          dietary_restrictions: data.diet.trim() || null,
+          message: data.message.trim() || null,
+        });
+
+      if (error) throw error;
+      setSuccess(true);
+    } catch (error) {
+      console.error("Não foi possível enviar a confirmação de presença.", error);
+      setSubmitError(
+        "Não foi possível enviar sua confirmação agora. Tente novamente em alguns instantes.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -59,14 +83,15 @@ export function RSVPForm() {
                 </div>
                 <h3 className="font-display text-2xl md:text-3xl">Recebemos sua confirmação!</h3>
                 <p className="mt-3 text-muted-foreground max-w-md mx-auto">
-                  Obrigado, {data.fullName.split(" ")[0] || "convidado"}. Mal podemos
-                  esperar para celebrar com você em {wedding.dateFriendly}.
+                  Obrigado, {data.fullName.split(" ")[0] || "convidado"}. Mal podemos esperar para
+                  celebrar com você em {wedding.dateFriendly}.
                 </p>
                 <button
                   type="button"
                   onClick={() => {
                     setData(INITIAL);
                     setSuccess(false);
+                    setSubmitError(null);
                   }}
                   className="mt-7 text-sm font-medium text-primary hover:underline"
                 >
@@ -78,6 +103,8 @@ export function RSVPForm() {
                 <Field label="Nome completo" required>
                   <input
                     required
+                    minLength={2}
+                    maxLength={120}
                     value={data.fullName}
                     onChange={(e) => update("fullName", e.target.value)}
                     className={inputCls}
@@ -90,6 +117,8 @@ export function RSVPForm() {
                     <input
                       required
                       type="tel"
+                      minLength={8}
+                      maxLength={30}
                       value={data.phone}
                       onChange={(e) => update("phone", e.target.value)}
                       className={inputCls}
@@ -99,6 +128,7 @@ export function RSVPForm() {
                   <Field label="E-mail">
                     <input
                       type="email"
+                      maxLength={254}
                       value={data.email}
                       onChange={(e) => update("email", e.target.value)}
                       className={inputCls}
@@ -124,6 +154,7 @@ export function RSVPForm() {
                   <Field label="Restrições alimentares">
                     <input
                       value={data.diet}
+                      maxLength={500}
                       onChange={(e) => update("diet", e.target.value)}
                       className={inputCls}
                       placeholder="Vegetariano, alergias..."
@@ -135,18 +166,31 @@ export function RSVPForm() {
                   <textarea
                     rows={4}
                     value={data.message}
+                    maxLength={2000}
                     onChange={(e) => update("message", e.target.value)}
                     className={`${inputCls} resize-none`}
                     placeholder="Deixe um recadinho carinhoso..."
                   />
                 </Field>
 
+                {submitError && (
+                  <p
+                    role="alert"
+                    className="rounded-xl border border-destructive/25 bg-destructive/5 px-4 py-3 text-sm text-destructive"
+                  >
+                    {submitError}
+                  </p>
+                )}
+
                 <button
                   type="submit"
                   disabled={submitting}
+                  aria-busy={submitting}
                   className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-7 py-3.5 text-sm font-medium shadow-soft hover:opacity-90 transition disabled:opacity-60"
                 >
-                  {submitting ? "Enviando..." : (
+                  {submitting ? (
+                    "Enviando..."
+                  ) : (
                     <>
                       <Send size={15} />
                       Confirmar presença
