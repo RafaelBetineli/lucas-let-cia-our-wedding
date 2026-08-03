@@ -2,9 +2,13 @@ import { SectionTitle } from "./SectionTitle";
 import { Reveal } from "./Reveal";
 
 import { story as STORY } from "@/data/wedding";
-import { galleryImages } from "@/data/gallery";
+import historia01 from "@/assets/story/historia-01.jpg"
+import historia02 from "@/assets/story/historia-02.jpg"
+import historia03 from "@/assets/story/historia-03.jpg"
 
-const collage = [galleryImages[0], galleryImages[3], galleryImages[5]];
+
+const collage = [historia01, historia02, historia03];
+
 
 export function StoryTimeline() {
   return (

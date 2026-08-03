@@ -1,7 +1,7 @@
-import conhecemosImg from "@/assets/story/conhecemos.jpg";
-import primeiroEncontroImg from "@/assets/story/primeiro-encontro.jpg";
-import pedidoImg from "@/assets/story/pedido.jpg";
-import preparativosImg from "@/assets/story/preparativos.jpg";
+import conhecemosImg from "@/assets/story/historia-01.jpg";
+import primeiroEncontroImg from "@/assets/story/historia-02.jpg";
+import pedidoImg from "@/assets/story/historia-03.jpg";
+import preparativosImg from "@/assets/story/historia-04.jpg";
 
 export const wedding = {
   couple: { groom: "Lucas", bride: "Letícia" },
