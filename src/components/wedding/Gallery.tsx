@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 import { SectionTitle } from "./SectionTitle";
 import { Reveal } from "./Reveal";
 
@@ -7,6 +8,40 @@ import { galleryImages as IMAGES } from "@/data/gallery";
 
 export function Gallery() {
   const [idx, setIdx] = useState<number | null>(null);
+  const [paused, setPaused] = useState(false);
+  const [selected, setSelected] = useState(0);
+  const [snaps, setSnaps] = useState<number[]>([]);
+
+  const [emblaRef, embla] = useEmblaCarousel({
+    loop: true,
+    align: "start",
+    containScroll: "trimSnaps",
+    duration: 45,
+  });
+
+  const onSelect = useCallback(() => {
+    if (!embla) return;
+    setSelected(embla.selectedScrollSnap());
+  }, [embla]);
+
+  useEffect(() => {
+    if (!embla) return;
+    setSnaps(embla.scrollSnapList());
+    onSelect();
+    embla.on("select", onSelect);
+    embla.on("reInit", onSelect);
+    return () => {
+      embla.off("select", onSelect);
+      embla.off("reInit", onSelect);
+    };
+  }, [embla, onSelect]);
+
+  // Autoplay suave, pausado no hover / lightbox / interação
+  useEffect(() => {
+    if (!embla || paused || idx !== null) return;
+    const id = setInterval(() => embla.scrollNext(), 5000);
+    return () => clearInterval(id);
+  }, [embla, paused, idx]);
 
   useEffect(() => {
     if (idx === null) return;
@@ -32,27 +67,70 @@ export function Gallery() {
           subtitle="Um pequeno álbum dos nossos dias."
         />
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-          {IMAGES.map((src, i) => (
-            <Reveal key={src} delay={(i % 4) * 60}>
-              <button
-                onClick={() => setIdx(i)}
-                className={[
-                  "group relative overflow-hidden rounded-2xl bg-blush w-full",
-                  i % 5 === 0 ? "aspect-[3/4]" : "aspect-square",
-                ].join(" ")}
-              >
-                <img
-                  src={src}
-                  alt={`Foto ${i + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              </button>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal>
+          <div
+            className="relative"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onTouchStart={() => setPaused(true)}
+          >
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex -ml-3 md:-ml-4">
+                {IMAGES.map((src, i) => (
+                  <div
+                    key={src}
+                    className="pl-3 md:pl-4 shrink-0 grow-0 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <button
+                      onClick={() => setIdx(i)}
+                      className="group relative block w-full overflow-hidden rounded-2xl bg-blush shadow-card aspect-[3/4]"
+                      aria-label={`Abrir foto ${i + 1}`}
+                    >
+                      <img
+                        src={src}
+                        alt={`Foto ${i + 1}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105"
+                      />
+                      <span className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <button
+              onClick={() => embla?.scrollPrev()}
+              aria-label="Foto anterior"
+              className="absolute left-1 md:-left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/85 backdrop-blur border border-border text-foreground/70 hover:text-primary shadow-card flex items-center justify-center transition"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => embla?.scrollNext()}
+              aria-label="Próxima foto"
+              className="absolute right-1 md:-right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 rounded-full bg-background/85 backdrop-blur border border-border text-foreground/70 hover:text-primary shadow-card flex items-center justify-center transition"
+            >
+              <ChevronRight size={20} />
+            </button>
+
+            {snaps.length > 1 && (
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
+                {snaps.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => embla?.scrollTo(i)}
+                    aria-label={`Ir para o slide ${i + 1}`}
+                    className={[
+                      "h-1.5 rounded-full transition-all duration-500",
+                      i === selected ? "w-6 bg-primary" : "w-1.5 bg-border hover:bg-gold/60",
+                    ].join(" ")}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+        </Reveal>
       </div>
 
       {/* Lightbox */}
