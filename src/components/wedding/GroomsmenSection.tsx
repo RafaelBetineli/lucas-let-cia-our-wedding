@@ -16,15 +16,36 @@ export function GroomsmenSection() {
           {groomsmen.map((person, idx) => (
             <Reveal key={person.name} delay={idx * 100}>
               <div className="group">
-                <div className="overflow-hidden rounded-2xl shadow-card aspect-[3/4] bg-blush">
+                <div className="overflow-hidden rounded-2x1 shadow-card aspect-square bg-blush">
+                 {person.fit === "contain" ? (
+                  <div className="relative w-full h-full overflow-hidden">
+                    <img
+                      src={person.image}
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 w-full h-full object-cover scale-125 blur-2xl opacity-25"
+                    />
+
+                    <img
+                      src={person.image}
+                      alt={person.name}
+                      loading="lazy"
+                      width={600}
+                      height={800}
+                      className="relative z-10 w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                ) : (
                   <img
                     src={person.image}
                     alt={person.name}
                     loading="lazy"
                     width={600}
                     height={800}
+                    style={{ objectPosition: person.position ?? "50% 50%" }}
                     className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
+                )}
                 </div>
                 <div className="mt-5 text-center">
                   <h3 className="font-display text-lg md:text-xl text-foreground">
