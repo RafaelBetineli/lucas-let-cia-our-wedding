@@ -53,7 +53,7 @@ export const story = [
   {
     date: "Setembro de 2025",
     title: "O pedido de casamento",
-    text: "Depois de cinco anos de risadas, aprendizados, sonhos compartilhados e um amor cada vez mais maduro, veio o tão esperado pedido de casamento. Um novo capítulo começou, cheio de gratidão, alegria e expectativa pelo grande dia.",
+    text: "Depois de quatro anos de risadas, aprendizados, sonhos compartilhados e um amor cada vez mais maduro, veio o tão esperado pedido de casamento. Um novo capítulo começou, cheio de gratidão, alegria e expectativa pelo grande dia.",
     img: primeiroEncontroImg,
   },
   {
@@ -90,6 +90,6 @@ export const reception = [
   {
     icon: "Info",
     title: "Informações",
-    text: "Recepção a partir das 18h30. Crianças são bem-vindas — avise no RSVP.",
+    text: "Recepção a partir das 15h30. Crianças são bem-vindas — avise no RSVP.",
   },
 ] as const;
